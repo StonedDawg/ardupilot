@@ -143,11 +143,11 @@ int32_t Plane::get_RTL_altitude_cm() const
 {
     int32_t rtl_alt;
     if (g.RTL_altitude_cm < 0) {
-        rtl_alt = g.RTL_altitude_cm * -1;
+        rtl_alt = abs(g.RTL_altitude_cm);
         if(current_loc.alt >= rtl_alt){
             return current_loc.alt;
         } else {
-            return rtl_alt;
+            return rtl_alt + home.alt;
         }
     }
     return g.RTL_altitude_cm + home.alt;
