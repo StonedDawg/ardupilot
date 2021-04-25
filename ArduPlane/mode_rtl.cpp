@@ -1,6 +1,8 @@
 #include "mode.h"
 #include "Plane.h"
 
+bool planeWithin500m = false;
+
 bool ModeRTL::_enter()
 {
     plane.prev_WP_loc = plane.current_loc;
@@ -37,10 +39,11 @@ void ModeRTL::navigate()
     if (qrtl_radius == 0) {
         qrtl_radius = abs(plane.aparm.loiter_radius);
     }
-if(plane.next_WP_loc.get_distance(plane.current_loc) >= 500) {
+if(plane.next_WP_loc.get_distance(plane.current_loc) <= 500 && !planeWithin500m) {
     
     plane.prev_WP_loc = plane.current_loc;
     plane.do_RTL(plane.get_RTL_altitude(1));
+    planeWithin500m = true;
 }
     if (plane.quadplane.available() && plane.quadplane.rtl_mode == 1 &&
         (plane.nav_controller->reached_loiter_target() ||
