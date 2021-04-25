@@ -137,18 +137,26 @@ void Plane::setup_glide_slope(void)
 /*
   return RTL altitude as AMSL altitude
  */
-int32_t Plane::get_RTL_altitude()
+int32_t Plane::get_RTL_altitude(uint8_t rtlstep)
 {
     int32_t rtl_alt;
+    if(rtlstep == 1){
     if (g.RTL_altitude_cm < 0) {
         rtl_alt = abs(g.RTL_altitude_cm) + home.alt;
-        if(current_loc.alt >= rtl_alt){
-            return current_loc.alt;
-        } else {
             return rtl_alt;
-        }
     }
     return g.RTL_altitude_cm + home.alt;
+    } else {
+        if (g.RTL_altitude_cm < 0) {
+            rtl_alt = abs(g.RTL_altitude_cm) + home.alt;
+            if(current_loc.alt >= rtl_alt){
+                return current_loc.alt;
+            } else {
+                return rtl_alt;
+            }
+        }
+        return g.RTL_altitude_cm + home.alt;
+    }
 }
 
 /*

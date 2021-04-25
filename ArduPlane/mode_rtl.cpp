@@ -4,7 +4,7 @@
 bool ModeRTL::_enter()
 {
     plane.prev_WP_loc = plane.current_loc;
-    plane.do_RTL(plane.get_RTL_altitude());
+    plane.do_RTL(plane.get_RTL_altitude(0));
     plane.rtl.done_climb = false;
 
     return true;
@@ -37,7 +37,11 @@ void ModeRTL::navigate()
     if (qrtl_radius == 0) {
         qrtl_radius = abs(plane.aparm.loiter_radius);
     }
-
+if(plane.next_WP_loc.get_distance(plane.current_loc) >= 500) {
+    
+    plane.prev_WP_loc = plane.current_loc;
+    plane.do_RTL(plane.get_RTL_altitude(1));
+}
     if (plane.quadplane.available() && plane.quadplane.rtl_mode == 1 &&
         (plane.nav_controller->reached_loiter_target() ||
          plane.current_loc.past_interval_finish_line(plane.prev_WP_loc, plane.next_WP_loc) ||
