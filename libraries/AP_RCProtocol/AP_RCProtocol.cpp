@@ -352,7 +352,13 @@ int16_t AP_RCProtocol::get_RSSI(void) const
     }
     return -1;
 }
-
+int16_t AP_RCProtocol::get_quality(void) const
+{
+    if (_detected_protocol != AP_RCProtocol::NONE) {
+        return backend[_detected_protocol]->get_quality();
+    }
+    return -1;
+}
 /*
   ask for bind start on supported receivers (eg spektrum satellite)
  */
