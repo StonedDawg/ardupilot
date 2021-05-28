@@ -204,7 +204,7 @@ void AP_RCProtocol_CRSF::_process_byte(uint32_t timestamp_us, uint8_t byte)
         _last_frame_time_us = timestamp_us;
         // decode here
         if (decode_csrf_packet()) {
-            add_input(MAX_CHANNELS, _channels, false, _link_status.rssi, _link_status.quality);
+            add_input(MAX_CHANNELS, _channels, false, _link_status.rssi, _link_status.quality, _link_status.rf_mode2);
         }
     }
 }

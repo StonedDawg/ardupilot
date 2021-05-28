@@ -358,6 +358,13 @@ int16_t AP_RCProtocol::get_quality(void) const
     }
     return -1;
 }
+int16_t AP_RCProtocol::get_rfmode2(void) const
+{
+    if (_detected_protocol != AP_RCProtocol::NONE) {
+        return backend[_detected_protocol]->get_rfmode2();
+    }
+    return -1;
+}
 /*
   ask for bind start on supported receivers (eg spektrum satellite)
  */
