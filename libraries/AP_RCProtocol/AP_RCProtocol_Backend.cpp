@@ -58,7 +58,7 @@ void AP_RCProtocol_Backend::read(uint16_t *pwm, uint8_t n)
 /*
   provide input from a backend
  */
-void AP_RCProtocol_Backend::add_input(uint8_t num_values, uint16_t *values, bool in_failsafe, int16_t _rssi, int16_t _quality)
+void AP_RCProtocol_Backend::add_input(uint8_t num_values, uint16_t *values, bool in_failsafe, int16_t _rssi, int16_t _quality, int16_t _rfmode2)
 {
     num_values = MIN(num_values, MAX_RCIN_CHANNELS);
     memcpy(_pwm_values, values, num_values*sizeof(uint16_t));
@@ -74,6 +74,7 @@ void AP_RCProtocol_Backend::add_input(uint8_t num_values, uint16_t *values, bool
     }
     rssi = _rssi;
     quality = _quality;
+    rfmode2 = _rfmode2;
 }
 
 

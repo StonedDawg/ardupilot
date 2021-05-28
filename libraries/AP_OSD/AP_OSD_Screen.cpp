@@ -1129,10 +1129,12 @@ void AP_OSD_Screen::draw_rssi(uint8_t x, uint8_t y)
 {
     AP_RSSI *ap_rssi = AP_RSSI::get_singleton();
     if (ap_rssi) {
-        const uint8_t rssiv = ap_rssi->read_receiver_rssi() * 99;
-        const uint8_t qualityv = ap_rssi->read_receiver_quality() * 99;
+        const uint8_t rssiv = ap_rssi->read_receiver_rssi();
+        const uint8_t qualityv = ap_rssi->read_receiver_quality();
+        const uint8_t rfmode2v = ap_rssi->read_receiver_rfmode2();
         backend->write(x, y, rssiv < osd->warn_rssi, "%c%2d", SYM_RSSI, rssiv);
-        backend->write(x, y+10, qualityv < osd->warn_rssi, "%c%2d", SYM_RSSI, rssiv);
+        backend->write(x, y+10, false, "%c%2d", SYM_RSSI, qualityv);
+        backend->write(x, y+20, false, "%c%2d", SYM_RSSI, rfmode2v);
     }
 }
 
