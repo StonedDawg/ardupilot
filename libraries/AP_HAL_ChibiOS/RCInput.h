@@ -52,7 +52,9 @@ public:
     int16_t get_rssi(void) override {
         return _rssi;
     }
-
+    int16_t get_quality(void) override {
+        return _quality;
+    }
     const char *protocol() const override { return last_protocol; }
 
     void _timer_tick(void);
@@ -65,6 +67,7 @@ private:
     uint8_t _num_channels;
     Semaphore rcin_mutex;
     int16_t _rssi = -1;
+    int16_t _quality = -1;
     uint32_t _rcin_timestamp_last_signal;
     bool _init;
     const char *last_protocol;

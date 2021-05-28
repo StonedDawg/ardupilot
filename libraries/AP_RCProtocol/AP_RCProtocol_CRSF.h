@@ -181,6 +181,7 @@ public:
 
     struct LinkStatus {
         int16_t rssi = -1;
+        int16_t quality = -1;
         RFMode rf_mode;
     };
 
