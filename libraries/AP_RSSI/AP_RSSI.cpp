@@ -141,7 +141,7 @@ float AP_RSSI::read_receiver_rssi()
         case RssiType::RECEIVER: {
             int16_t rssi = RC_Channels::get_receiver_rssi();
             if (rssi != -1) {
-                return rssi/99;
+                return rssi;
             }
             return 0.0f;
         }
@@ -165,7 +165,31 @@ float AP_RSSI::read_receiver_quality()
         case RssiType::RECEIVER: {
             int16_t quality = RC_Channels::get_receiver_quality();
             if (quality != -1) {
-                return quality/99;
+                return quality;
+            }
+            return 0.0f;
+        }
+        case RssiType::PWM_PIN:
+            return read_pwm_pin_rssi();
+        case RssiType::TELEMETRY_RADIO_RSSI:
+            return read_telemetry_radio_rssi();
+    }
+    // should never get to here
+    return 0.0f;
+}
+float AP_RSSI::read_receiver_rfmode2()
+{
+    switch (RssiType(rssi_type.get())) {
+        case RssiType::TYPE_DISABLED:
+            return 0.0f;
+        case RssiType::ANALOG_PIN:
+            return read_pin_rssi();
+        case RssiType::RC_CHANNEL_VALUE:
+            return read_channel_rssi();
+        case RssiType::RECEIVER: {
+            int16_t rfmode2 = RC_Channels::get_receiver_rfmode2();
+            if (rfmode2 != -1) {
+                return rfmode2;
             }
             return 0.0f;
         }

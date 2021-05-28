@@ -99,6 +99,10 @@ int16_t RC_Channels::get_receiver_quality(void)
 {
     return hal.rcin->get_quality();
 }
+int16_t RC_Channels::get_receiver_rfmode2(void)
+{
+    return hal.rcin->get_rfmode2();
+}
 void RC_Channels::clear_overrides(void)
 {
     RC_Channels &_rc = rc();

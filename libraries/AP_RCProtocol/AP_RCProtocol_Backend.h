@@ -70,6 +70,9 @@ public:
     int16_t get_quality(void) const {
         return quality;
     }
+    int16_t get_rfmode2(void) const {
+        return rfmode2;
+    }
     // get UART for RCIN, if available. This will return false if we
     // aren't getting the active RC input protocol via the uart
     AP_HAL::UARTDriver *get_UART(void) const {
@@ -101,7 +104,7 @@ protected:
         uint32_t ch7 : 11;
     } PACKED;
 
-    void add_input(uint8_t num_channels, uint16_t *values, bool in_failsafe, int16_t rssi=-1, int16_t quality=-1);
+    void add_input(uint8_t num_channels, uint16_t *values, bool in_failsafe, int16_t rssi=-1, int16_t quality=-1, int16_t rfmode2=-1);
     AP_RCProtocol &frontend;
 
     void log_data(AP_RCProtocol::rcprotocol_t prot, uint32_t timestamp, const uint8_t *data, uint8_t len) const;
@@ -118,4 +121,5 @@ private:
     uint8_t  _num_channels;
     int16_t rssi = -1;
     int16_t quality = -1;
+    int16_t rfmode2 = -1;
 };
