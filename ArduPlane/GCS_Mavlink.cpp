@@ -235,9 +235,9 @@ void Plane::send_servo_out(mavlink_channel_t chan)
         10000 * (SRV_Channels::get_output_scaled(SRV_Channel::k_rudder) / 4500.0f),
         0,
         0,
-        0,
-        0,
-        rssi.read_receiver_rssi_uint8());
+        (int16_t)rssi.read_receiver_rfmode2(),
+        (int16_t)rssi.read_receiver_quality(),
+        rssi.read_receiver_rssi());
 }
 
 float GCS_MAVLINK_Plane::vfr_hud_airspeed() const
