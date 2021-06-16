@@ -1121,7 +1121,7 @@ void AP_OSD_Screen::draw_bat_volt(uint8_t x, uint8_t y)
     AP_BattMonitor &battery = AP::battery();
     uint8_t pct = battery.capacity_remaining_pct();
     uint8_t p = (100 - pct) / 16.6;
-    float v = battery.voltage();
+    float v = battery.voltage()/(battery.pack_capacity_mah()/1000);
     backend->write(x,y, v < osd->warn_batvolt, "%c%2.1f%c", SYM_BATT_FULL + p, (double)v, SYM_VOLT);
 }
 
