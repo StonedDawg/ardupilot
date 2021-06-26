@@ -210,27 +210,6 @@ void GCS_MAVLINK_Plane::send_position_target_global_int()
 }
 
 
-
-void Plane::send_servo_out(mavlink_channel_t chan)
-{
-    // normalized values scaled to -10000 to 10000
-    // This is used for HIL.  Do not change without discussing with
-    // HIL maintainers
-    mavlink_msg_rc_channels_scaled_send(
-        chan,
-        millis(),
-        0, // port 0
-        10000 * (SRV_Channels::get_output_scaled(SRV_Channel::k_aileron) / 4500.0f),
-        10000 * (SRV_Channels::get_output_scaled(SRV_Channel::k_elevator) / 4500.0f),
-        10000 * (SRV_Channels::get_output_scaled(SRV_Channel::k_throttle) / 100.0f),
-        10000 * (SRV_Channels::get_output_scaled(SRV_Channel::k_rudder) / 4500.0f),
-        0,
-        0,
-        (int16_t)rssi.read_receiver_rfmode2(),
-        (int16_t)rssi.read_receiver_quality(),
-        rssi.read_receiver_rssi());
-}
-
 float GCS_MAVLINK_Plane::vfr_hud_airspeed() const
 {
     // airspeed sensors are best.  While the AHRS airspeed_estimate
