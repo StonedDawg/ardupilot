@@ -173,9 +173,13 @@ public:
 
     enum class RFMode : uint8_t {
         CRSF_RF_MODE_4HZ = 0,
+        CRSF_RF_MODE_25HZ,
         CRSF_RF_MODE_50HZ,
+        CRSF_RF_MODE_100HZ,
         CRSF_RF_MODE_150HZ,
+        CRSF_RF_MODE_200HZ,
         CRSF_RF_MODE_250HZ,
+        CRSF_RF_MODE_500HZ,
         CRSF_RF_MODE_UNKNOWN,
     };
 

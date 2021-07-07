@@ -162,7 +162,7 @@ void AP_CRSF_Telem::process_rf_mode_changes()
 // return custom frame id based on fw version
 uint8_t AP_CRSF_Telem::get_custom_telem_frame_id() const
 {
-    if (!_crsf_version.pending && (_crsf_version.major > 4 || (_crsf_version.major == 4 && _crsf_version.minor >= 6))) {
+    if (!_crsf_version.pending) {
         return AP_RCProtocol_CRSF::CRSF_FRAMETYPE_AP_CUSTOM_TELEM;
     }
     return AP_RCProtocol_CRSF::CRSF_FRAMETYPE_AP_CUSTOM_TELEM_LEGACY;
@@ -500,7 +500,7 @@ void AP_CRSF_Telem::process_device_info_frame(ParameterDeviceInfoFrame* info)
     _crsf_version.minor = info->payload[offset+12];
 
     // should we use rf_mode reported by link statistics?
-    if (!_crsf_version.is_tracer && (_crsf_version.major > 3 || (_crsf_version.major == 3 && _crsf_version.minor >= 72))) {
+    if (!_crsf_version.is_tracer) {
         _crsf_version.use_rf_mode = true;
     }
 

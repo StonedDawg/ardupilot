@@ -346,7 +346,7 @@ void AP_RCProtocol_CRSF::process_link_stats_frame(const void* data)
         // this is an approximation recommended by Remo from TBS
         _link_status.rssi = int16_t(roundf(rssi_dbm));
 
-    _link_status.rf_mode = static_cast<RFMode>(MIN(link->rf_mode, 3U));
+    _link_status.rf_mode = static_cast<RFMode>(MIN(link->rf_mode, 7U));
     _link_status.rx_antenna = link->active_antenna;
 }
 
