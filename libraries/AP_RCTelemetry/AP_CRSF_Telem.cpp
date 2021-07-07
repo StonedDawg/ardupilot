@@ -151,7 +151,7 @@ void AP_CRSF_Telem::process_rf_mode_changes()
     // report a change in RF mode or a chnage of more than 10Hz if we haven't done so in the last 5s
     if ((now - _telem_last_report_ms > 5000) &&
         (_telem_rf_mode != current_rf_mode || abs(int16_t(_telem_last_avg_rate) - int16_t(_scheduler.avg_packet_rate)) > 25)) {
-        //gcs().send_text(MAV_SEVERITY_INFO, "CRSF: RF mode %d, rate is %dHz", (uint8_t)current_rf_mode, _scheduler.avg_packet_rate);
+        gcs().send_text(MAV_SEVERITY_INFO, "CRSF: RF mode %d, rate is %dHz", (uint8_t)current_rf_mode, _scheduler.avg_packet_rate);
         update_custom_telemetry_rates(current_rf_mode);
         _telem_rf_mode = current_rf_mode;
         _telem_last_avg_rate = _scheduler.avg_packet_rate;
@@ -500,7 +500,7 @@ void AP_CRSF_Telem::process_device_info_frame(ParameterDeviceInfoFrame* info)
     _crsf_version.minor = info->payload[offset+12];
 
     // should we use rf_mode reported by link statistics?
-    if (!_crsf_version.is_tracer && (_crsf_version.major > 3 || (_crsf_version.major == 3 && _crsf_version.minor >= 72))) {
+    if (!_crsf_version.is_tracer) {
         _crsf_version.use_rf_mode = true;
     }
 
