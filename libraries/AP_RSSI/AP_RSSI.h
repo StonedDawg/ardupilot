@@ -51,7 +51,7 @@ public:
     // 0.0 represents weakest signal, 1.0 represents maximum signal.
     float read_receiver_rssi();
     float read_receiver_quality();
-    float read_receiver_rfmode2();
+    float read_receiver_rx_antenna();
     // Read the receiver RSSI value as an 8-bit integer
     // 0 represents weakest signal, 255 represents maximum signal.
     uint8_t read_receiver_rssi_uint8();   

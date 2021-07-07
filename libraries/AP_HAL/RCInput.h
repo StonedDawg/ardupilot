@@ -35,7 +35,7 @@ public:
     /* get receiver based RSSI if available. -1 for unknown, 0 for no link, 255 for maximum link */
     virtual int16_t get_rssi(void) { return -1; }
     virtual int16_t get_quality(void) { return -1; }
-    virtual int16_t get_rfmode2(void) { return -1; }
+    virtual int16_t get_rx_antenna(void) { return -1; }
     /* Return string describing method RC input protocol */
     virtual const char *protocol() const = 0;
 

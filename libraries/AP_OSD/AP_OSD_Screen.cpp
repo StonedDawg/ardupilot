@@ -1131,8 +1131,8 @@ void AP_OSD_Screen::draw_rssi(uint8_t x, uint8_t y)
     if (ap_rssi) {
         const uint8_t rssiv = ap_rssi->read_receiver_rssi();
         const uint8_t qualityv = ap_rssi->read_receiver_quality();
-        const uint8_t rfmode2v = ap_rssi->read_receiver_rfmode2();
-        backend->write(x, y, rssiv < osd->warn_rssi, "%c%d.%d.-%d", SYM_RSSI, rfmode2v,qualityv,rssiv);
+        const uint8_t rx_antennav = ap_rssi->read_receiver_rx_antenna();
+        backend->write(x, y, rssiv < osd->warn_rssi, "%c%d.%d.-%d", SYM_RSSI, rx_antennav,qualityv,rssiv);
     }
 }
 

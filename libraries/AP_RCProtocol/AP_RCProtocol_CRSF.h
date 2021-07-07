@@ -183,7 +183,7 @@ public:
         int16_t rssi = -1;
         int16_t quality = -1;
         RFMode rf_mode;
-        int16_t rf_mode2;
+        int16_t rx_antenna;
     };
 
     // this will be used by AP_CRSF_Telem to access link status data

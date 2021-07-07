@@ -365,7 +365,7 @@ public:
     static uint8_t get_valid_channel_count(void);                      // returns the number of valid channels in the last read
     static int16_t get_receiver_rssi(void);
     static int16_t get_receiver_quality(void);                            // returns [0, 255] for receiver RSSI (0 is no link) if present, otherwise -1
-    static int16_t get_receiver_rfmode2(void);
+    static int16_t get_receiver_rx_antenna(void);
     bool read_input(void);                                             // returns true if new input has been read in
     static void clear_overrides(void);                                 // clears any active overrides
     static bool receiver_bind(const int dsmMode);                      // puts the receiver in bind mode if present, returns true if success

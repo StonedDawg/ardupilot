@@ -181,7 +181,7 @@ void RCInput::_timer_tick(void)
         rcprot.read(_rc_values, _num_channels);
         _rssi = rcprot.get_RSSI();
         _quality = rcprot.get_quality();
-        _rfmode2 = rcprot.get_rfmode2();
+        _rx_antenna = rcprot.get_rx_antenna();
 #ifndef HAL_NO_UARTDRIVER
         rc_protocol = rcprot.protocol_name();
 #endif

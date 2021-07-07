@@ -55,8 +55,8 @@ public:
     int16_t get_quality(void) override {
         return _quality;
     }
-    int16_t get_rfmode2(void) override {
-        return _rfmode2;
+    int16_t get_rx_antenna(void) override {
+        return _rx_antenna;
     }
     const char *protocol() const override { return last_protocol; }
 
@@ -71,7 +71,7 @@ private:
     Semaphore rcin_mutex;
     int16_t _rssi = -1;
     int16_t _quality = -1;
-    int16_t _rfmode2 = -1;
+    int16_t _rx_antenna = -1;
     uint32_t _rcin_timestamp_last_signal;
     bool _init;
     const char *last_protocol;

@@ -177,7 +177,7 @@ float AP_RSSI::read_receiver_quality()
     // should never get to here
     return 0.0f;
 }
-float AP_RSSI::read_receiver_rfmode2()
+float AP_RSSI::read_receiver_rx_antenna()
 {
     switch (RssiType(rssi_type.get())) {
         case RssiType::TYPE_DISABLED:
@@ -187,9 +187,9 @@ float AP_RSSI::read_receiver_rfmode2()
         case RssiType::RC_CHANNEL_VALUE:
             return read_channel_rssi();
         case RssiType::RECEIVER: {
-            int16_t rfmode2 = RC_Channels::get_receiver_rfmode2();
-            if (rfmode2 != -1) {
-                return rfmode2;
+            int16_t rx_antenna = RC_Channels::get_receiver_rx_antenna();
+            if (rx_antenna != -1) {
+                return rx_antenna;
             }
             return 0.0f;
         }

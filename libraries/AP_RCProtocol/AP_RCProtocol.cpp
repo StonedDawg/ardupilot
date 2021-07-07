@@ -359,10 +359,10 @@ int16_t AP_RCProtocol::get_quality(void) const
     }
     return -1;
 }
-int16_t AP_RCProtocol::get_rfmode2(void) const
+int16_t AP_RCProtocol::get_rx_antenna(void) const
 {
     if (_detected_protocol != AP_RCProtocol::NONE) {
-        return backend[_detected_protocol]->get_rfmode2();
+        return backend[_detected_protocol]->get_rx_antenna();
     }
     return -1;
 }

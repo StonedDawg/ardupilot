@@ -70,8 +70,8 @@ public:
     int16_t get_quality(void) const {
         return quality;
     }
-    int16_t get_rfmode2(void) const {
-        return rfmode2;
+    int16_t get_rx_antenna(void) const {
+        return rx_antenna;
     }
     // get UART for RCIN, if available. This will return false if we
     // aren't getting the active RC input protocol via the uart
@@ -104,7 +104,7 @@ protected:
         uint32_t ch7 : 11;
     } PACKED;
 
-    void add_input(uint8_t num_channels, uint16_t *values, bool in_failsafe, int16_t rssi=-1, int16_t quality=-1, int16_t rfmode2=-1);
+    void add_input(uint8_t num_channels, uint16_t *values, bool in_failsafe, int16_t rssi=-1, int16_t quality=-1, int16_t rx_antenna=-1);
     AP_RCProtocol &frontend;
 
     void log_data(AP_RCProtocol::rcprotocol_t prot, uint32_t timestamp, const uint8_t *data, uint8_t len) const;
@@ -121,5 +121,5 @@ private:
     uint8_t  _num_channels;
     int16_t rssi = -1;
     int16_t quality = -1;
-    int16_t rfmode2 = -1;
+    int16_t rx_antenna = -1;
 };

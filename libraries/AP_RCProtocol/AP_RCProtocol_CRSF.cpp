@@ -204,7 +204,7 @@ void AP_RCProtocol_CRSF::_process_byte(uint32_t timestamp_us, uint8_t byte)
         _last_frame_time_us = timestamp_us;
         // decode here
         if (decode_csrf_packet()) {
-            add_input(MAX_CHANNELS, _channels, false, _link_status.rssi, _link_status.quality, _link_status.rf_mode2);
+            add_input(MAX_CHANNELS, _channels, false, _link_status.rssi, _link_status.quality, _link_status.rx_antenna);
         }
     }
 }
@@ -347,7 +347,7 @@ void AP_RCProtocol_CRSF::process_link_stats_frame(const void* data)
         _link_status.rssi = int16_t(roundf(rssi_dbm));
 
     _link_status.rf_mode = static_cast<RFMode>(MIN(link->rf_mode, 3U));
-    _link_status.rf_mode2 = link->rf_mode;
+    _link_status.rx_antenna = link->active_antenna;
 }
 
 // process a byte provided by a uart

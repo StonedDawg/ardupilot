@@ -71,7 +71,7 @@ public:
     void start_bind(void);
     int16_t get_RSSI(void) const;
     int16_t get_quality(void) const;
-    int16_t get_rfmode2(void) const;
+    int16_t get_rx_antenna(void) const;
 
     // return protocol name as a string
     static const char *protocol_name_from_protocol(rcprotocol_t protocol);
