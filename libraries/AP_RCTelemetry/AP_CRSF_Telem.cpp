@@ -279,7 +279,8 @@ bool AP_CRSF_Telem::is_packet_ready(uint8_t idx, bool queue_empty)
                 _crsf_version.pending = false;
                 _crsf_version.minor = 0;
                 _crsf_version.major = 0;
-                gcs().send_text(MAV_SEVERITY_DEBUG,"CRSF: RX device ping failed");
+                _crsf_version.use_rf_mode = true;
+                gcs().send_text(MAV_SEVERITY_DEBUG,"CRSF:no serial number");
             } else {
                 _pending_request.destination = AP_RCProtocol_CRSF::CRSF_ADDRESS_CRSF_RECEIVER;
                 _pending_request.frame_type = AP_RCProtocol_CRSF::CRSF_FRAMETYPE_PARAM_DEVICE_INFO;
