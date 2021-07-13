@@ -1,4 +1,4 @@
-# ArduPilot Project
+# ArduPilot RFmode.LQ.RSSI Project
 This branch will show the ARDUPILOT RSSI OSD ELEMENT as XX.YYY.ZZZ (RFmode.LQ.RSSI in dBm).
 make spaces on the right side of the RSSI OSD element so that your RSSI display is not cropped.
 
